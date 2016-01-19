@@ -77,7 +77,7 @@
         <center>	
 	    <b><span id="msg" style="font-size:9pt;">${message}</span></b>
 	    </center>  
-         <div class="col-md-4 col-md-offset-4">
+         <div class="col-md-4 col-md-offset-8">
 			&nbsp;
 			<div class="pull-right"><a href="<c:url value='/user/add' />">Add New User</a></div>  
     	</div>
