@@ -152,7 +152,15 @@ function setMsg(text)
  
   <div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-secondary">Register</button>
+	<c:choose>
+		<c:when test="${edit}">
+			 <button type="submit" class="btn btn-secondary">Update</button>
+		</c:when>
+		<c:otherwise>
+			 <button type="submit" class="btn btn-secondary">Register</button>
+		</c:otherwise>
+	</c:choose>
+     
     </div>
   </div>
 </form:form>
