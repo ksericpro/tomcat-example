@@ -1,4 +1,4 @@
-package com.eric.dao;
+package net.codejava.spring.dao;
 
 import java.io.Serializable;
 

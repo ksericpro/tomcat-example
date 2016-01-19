@@ -1,5 +1,10 @@
-package com.eric.model;
+package net.codejava.spring.model;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("session")
 public class User {
 	private int id;
 	private String username;

@@ -37,16 +37,68 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  
+<!-- Customize Javascript-->
+<script language="javascript">
+<!--
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+function check()
+{
+	if (document.getElementById("email").value=="")
+	{
+		setMsg("Email cannot be Empty");
+		document.getElementById("email").focus();
+		return false;
+	}
+	else if (document.getElementById("password").value=="")
+	{
+		setMsg("Passwords cannot be Empty");
+		document.getElementById("password").focus();
+		return false;
+	}
+	else 
+	{
+		if (!validateEmail(document.getElementById("email").value))
+		{
+			setMsg("Email wrong format");
+			document.getElementById("email").focus();
+			return false;
+		}
+	}
+	
+	setMsg("Submiting....")
+	return true;
+}
+
+function setMsg(text)
+{
+	var d = document.getElementById("msg");
+	d.innerHTML = text;
+}
+-->
+</script>
 <%@ page isELIgnored="false"%>
 <body>
 	<div class="container">
-      <b><span id="msg" style="font-size:9pt;">${message}</span></b>
-	  <form:form class="form-signin" method="POST" action="${pageContext.request.contextPath}/login/process" modelAttribute="user">
+		<center>	
+	    <b><span id="msg" style="font-size:9pt;">${message}</span></b>
+	    </center>  
+    	
+      
+	  <form:form class="form-signin" method="POST" action="${pageContext.request.contextPath}/login/process" modelAttribute="user" onsubmit="return check();">
+	    <form:input type="hidden" path="id" id="id"/>
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <!--   <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>-->
+         <form:input path="email" class="form-control" id="email" placeholder="Email"></form:input>
+        
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <!--<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>-->
+          <form:password path="password" class="form-control" id="password" placeholder="Password"/>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
